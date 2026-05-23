@@ -1,0 +1,511 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+}
+
+.App {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Navigation */
+.navbar {
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.nav-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0066cc;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.nav-links button:hover {
+  color: #0066cc;
+}
+
+.nav-links button.active {
+  color: #0066cc;
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 2px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #f5f7ff 0%, #fff 100%);
+  border-bottom: 1px solid #e0e0e0;
+  padding: 2rem 1.5rem;
+}
+
+.header-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+
+.header p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Search Bar */
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0 12px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #0066cc;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.search-bar button {
+  padding: 0 16px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: all 0.2s;
+}
+
+.search-bar button:hover {
+  border-color: #0066cc;
+  background: #f0f4ff;
+}
+
+/* Category Filters */
+.category-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.category-btn {
+  padding: 6px 12px;
+  height: 32px;
+  border: 1px solid #ddd;
+  background: #f5f5f5;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.category-btn:hover {
+  border-color: #0066cc;
+}
+
+.category-btn.active {
+  background: #0066cc;
+  color: #fff;
+  border-color: #0066cc;
+}
+
+/* Main Content */
+.main-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.main-content h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #1a1a1a;
+}
+
+/* Featured Section */
+.featured-section {
+  margin-bottom: 3rem;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+
+/* Business Cards */
+.business-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.business-card:hover:not(.expanded) {
+  border-color: #0066cc;
+  box-shadow: 0 2px 8px rgba(0, 102, 204, 0.15);
+}
+
+.business-card.featured {
+  border: 2px solid #0066cc;
+}
+
+.card-image {
+  width: 100%;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #1a1a1a;
+}
+
+.card-content .category {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.tier-badge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 500;
+}
+
+/* List Items */
+.business-list {
+  display: grid;
+  gap: 12px;
+}
+
+.business-card.list-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.list-image {
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.list-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-content h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #1a1a1a;
+}
+
+.list-content .category {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.list-content .location {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+/* Expanded Card */
+.business-card.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  border-radius: 0;
+  z-index: 1000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  align-self: flex-start;
+  font-weight: 500;
+}
+
+.business-hero {
+  width: 100%;
+  height: 240px;
+  background-size: cover;
+  background-position: center;
+  background-color: #f0f0f0;
+}
+
+.business-detail-content {
+  flex: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1.5rem;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.detail-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.detail-header .category {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item .label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.info-item a,
+.info-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.info-item a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.info-item a:hover {
+  text-decoration: underline;
+}
+
+/* Description */
+.description-section {
+  margin-bottom: 2rem;
+}
+
+.description-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.description-section p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+}
+
+/* Analytics Box */
+.analytics-box {
+  padding: 1rem;
+  background: #f0f7ff;
+  border-left: 2px solid #0066cc;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+
+.analytics-box h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1a1a1a;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat .label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.stat .value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.call-btn,
+.visit-btn {
+  padding: 0 16px;
+  height: 44px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a1a1a;
+  transition: all 0.2s;
+}
+
+.call-btn:hover,
+.visit-btn:hover {
+  border-color: #0066cc;
+  background: #f0f4ff;
+}
+
+/* Empty State */
+.empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .business-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .action-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+  }
+
+  .tier-badge {
+    margin-top: 0.5rem;
+  }
+}
